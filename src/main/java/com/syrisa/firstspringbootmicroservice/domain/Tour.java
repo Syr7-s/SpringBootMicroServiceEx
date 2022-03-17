@@ -41,7 +41,17 @@ public class Tour {
     @Column
     @Enumerated
     private Region region;
-
-
-
+/*
+    public Tour( String title, String description, String blurb, Integer price, String duration, String bullets, String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
+        this.title = title;
+        this.description = description;
+        this.blurb = blurb;
+        this.price = price;
+        this.duration = duration;
+        this.bullets = bullets;
+        this.keywords = keywords;
+        this.tourPackage = tourPackage;
+        this.difficulty = difficulty;
+        this.region = region;
+    }*/
 }
