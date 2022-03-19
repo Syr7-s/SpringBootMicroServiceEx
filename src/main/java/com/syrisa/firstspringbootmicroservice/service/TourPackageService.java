@@ -16,7 +16,7 @@ public class TourPackageService {
                 .orElse(tourPackageRepository.save(tourPackage));
     }
 
-    public Iterable<TourPackage> loogUp(){return tourPackageRepository.findAll();}
+    public Iterable<TourPackage> getAll(){return tourPackageRepository.findAll();}
 
     public long total(){return tourPackageRepository.count();}
 }

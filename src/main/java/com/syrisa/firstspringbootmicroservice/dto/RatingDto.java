@@ -1,9 +1,7 @@
 package com.syrisa.firstspringbootmicroservice.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.syrisa.firstspringbootmicroservice.domain.TourRating;
+import lombok.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -11,8 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 public class RatingDto {
     @Min(0)
     @Max(5)
@@ -23,4 +20,16 @@ public class RatingDto {
 
     @NotNull
     private Integer customerId;
+
+    public RatingDto(TourRating tourRating) {
+        this(tourRating.getScore(), tourRating.getComment(), tourRating.getPk().getCustomerID());
+    }
+
+    private RatingDto(Integer score, String comment, Integer customerId) {
+        this.score = score;
+        this.comment = comment;
+        this.customerId = customerId;
+    }
+
+    protected RatingDto() {}
 }
