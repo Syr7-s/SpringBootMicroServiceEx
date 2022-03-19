@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Tour {
     @Id
@@ -41,7 +40,7 @@ public class Tour {
     @Column
     @Enumerated
     private Region region;
-/*
+
     public Tour( String title, String description, String blurb, Integer price, String duration, String bullets, String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
         this.title = title;
         this.description = description;
@@ -53,5 +52,5 @@ public class Tour {
         this.tourPackage = tourPackage;
         this.difficulty = difficulty;
         this.region = region;
-    }*/
+    }
 }

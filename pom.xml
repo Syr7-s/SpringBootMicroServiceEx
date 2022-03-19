@@ -14,7 +14,7 @@
 	<name>FirstSpringBootMicroService</name>
 	<description>FirstSpringBootMicroService</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>13</java.version>
 		<repackage.classifier/>
 	</properties>
 	<dependencies>
@@ -46,9 +46,9 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>2.0.2</version>
 		</dependency>
 	</dependencies>
 
@@ -64,53 +64,14 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-					<classifier>${repackage.classifier}</classifier>
-					<image>
-						<builder>paketobuildpacks/builder:tiny</builder>
-						<env>
-							<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-						</env>
-					</image>
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.hibernate.orm.tooling</groupId>
-				<artifactId>hibernate-enhance-maven-plugin</artifactId>
-				<version>${hibernate.version}</version>
-				<executions>
-					<execution>
-						<id>enhance</id>
-						<goals>
-							<goal>enhance</goal>
-						</goals>
-						<configuration>
-							<failOnError>true</failOnError>
-							<enableLazyInitialization>true</enableLazyInitialization>
-							<enableDirtyTracking>true</enableDirtyTracking>
-							<enableAssociationManagement>true</enableAssociationManagement>
-							<enableExtendedEnhancement>false</enableExtendedEnhancement>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 		<finalName>first-spring-microservice</finalName>
 	</build>
 
 
-	<profiles>
-		<profile>
-			<id>native</id>
-			<properties>
-				<repackage.classifier>exec</repackage.classifier>
-				<native-buildtools.version>0.9.10</native-buildtools.version>
-			</properties>
 
-			<build>
-
-			</build>
-		</profile>
-	</profiles>
 
 </project>

@@ -10,11 +10,10 @@ import org.springframework.stereotype.Service;
 public class TourPackageService {
     private TourPackageRepository tourPackageRepository;
 
-    public TourPackage createTourPackage(String code,String name){
+    public TourPackage createTourPackage(TourPackage tourPackage){
 
-
-        return tourPackageRepository.findById(code)
-                .orElse(tourPackageRepository.save(new TourPackage(code,name)));
+        return tourPackageRepository.findById(tourPackage.getCode())
+                .orElse(tourPackageRepository.save(tourPackage));
     }
 
     public Iterable<TourPackage> loogUp(){return tourPackageRepository.findAll();}

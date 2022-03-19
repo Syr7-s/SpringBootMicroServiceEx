@@ -38,8 +38,12 @@ public class TourService {
                 .orElseThrow(() -> new RuntimeException("Tour package does not exist :: " + tourPackageName));
 
         return tourRepository.save(new Tour(title,description,blurb,price,duration,bullets,keywords,tourPackage,difficulty,region));
-    }*/
+    }
+    */
+
     public long total() {
         return tourRepository.count();
     }
+
+
 }

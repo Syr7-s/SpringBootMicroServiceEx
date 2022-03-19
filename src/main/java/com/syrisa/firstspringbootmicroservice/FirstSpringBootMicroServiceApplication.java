@@ -7,6 +7,7 @@ import com.syrisa.firstspringbootmicroservice.domain.Region;
 import com.syrisa.firstspringbootmicroservice.service.TourPackageService;
 import com.syrisa.firstspringbootmicroservice.service.TourService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,28 +21,27 @@ import static com.fasterxml.jackson.annotation.PropertyAccessor.FIELD;
 
 
 @SpringBootApplication
-//@RequiredArgsConstructor
-public class FirstSpringBootMicroServiceApplication /* implements CommandLineRunner */{
-	/*private final TourPackageService tourPackageService;
+@RequiredArgsConstructor
+public class FirstSpringBootMicroServiceApplication {
+private final TourPackageService tourPackageService;
+/*	@Value("${firstspringbootmicroservice.importfile}")
+	private String importfile;
+
 	private final TourService tourService;
-	@Value("${ec.importfile}")
-    private String importfile;
-	*/
+
+*/
 	public static void main(String[] args) {
+
 		SpringApplication.run(FirstSpringBootMicroServiceApplication.class, args);
 	}
 /*
 	private void loadToursAtStartUp() throws IOException {
 		createTourPackages();
 		long numOfPackages = tourPackageService.total();
-		createTours("ExploreCalifornia.json");
+		createTours(importfile);
 		long numOfTours = tourService.total();
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		loadToursAtStartUp();
-	}
 
 
 
@@ -71,10 +71,16 @@ public class FirstSpringBootMicroServiceApplication /* implements CommandLineRun
 						importedTour.getRegion()));
 	}
 
-	private static class TourFromFile {
+    @Override
+    public void run(String... args) throws Exception {
+        loadToursAtStartUp();
+    }
 
+    private static class TourFromFile {
+		//fields
 		private String packageType, title, description, blurb, price, length,
 				bullets, keywords, difficulty, region;
+		//reader
 		static List<TourFromFile> read(String fileToImport) throws IOException {
 			return new ObjectMapper().setVisibility(FIELD, ANY).
 					readValue(new FileInputStream(fileToImport), new TypeReference<List<TourFromFile>>() {});
@@ -100,5 +106,7 @@ public class FirstSpringBootMicroServiceApplication /* implements CommandLineRun
 		Difficulty getDifficulty() { return Difficulty.valueOf(difficulty); }
 
 		Region getRegion() { return Region.findByLabel(region); }
-	}*/
+	}
+	*/
+
 }
