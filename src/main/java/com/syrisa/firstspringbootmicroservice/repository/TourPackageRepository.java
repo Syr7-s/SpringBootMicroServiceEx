@@ -4,12 +4,12 @@ import com.syrisa.firstspringbootmicroservice.domain.TourPackage;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
-import org.springframework.stereotype.Repository;
+
 
 import java.util.Optional;
 
-@RepositoryRestResource(collectionResourceRel = "packages",path="packages")
-public interface TourPackageRepository extends CrudRepository<TourPackage,String> {
+@RepositoryRestResource(collectionResourceRel = "packages", path = "packages")
+public interface TourPackageRepository extends CrudRepository<TourPackage, String> {
     Optional<TourPackage> findByName(String name);
 
     @Override
